@@ -1,2 +1,0 @@
-# GameDevLessons
-C++ для GameDev

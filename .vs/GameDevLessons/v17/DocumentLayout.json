@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "K:\\GitHub\\GameDevLessons\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2B8579E8-7FB9-42AA-949E-B91BBE41A0ED}|GameDevLessons\\GameDevLessons.vcxproj|K:\\GitHub\\GameDevLessons\\GameDevLessons\\GameDevLessons.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2B8579E8-7FB9-42AA-949E-B91BBE41A0ED}|GameDevLessons\\GameDevLessons.vcxproj|solutionrelative:GameDevLessons\\GameDevLessons.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameDevLessons.cpp",
+              "DocumentMoniker": "K:\\GitHub\\GameDevLessons\\GameDevLessons\\GameDevLessons.cpp",
+              "RelativeDocumentMoniker": "GameDevLessons\\GameDevLessons.cpp",
+              "ToolTip": "K:\\GitHub\\GameDevLessons\\GameDevLessons\\GameDevLessons.cpp",
+              "RelativeToolTip": "GameDevLessons\\GameDevLessons.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-28T18:33:05.713Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
