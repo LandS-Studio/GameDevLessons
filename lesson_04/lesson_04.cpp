@@ -41,20 +41,16 @@ int main()
     //STEP 1
     std::cout << "STEP 1\n";
     float a, b, c;
+    
         
     std::cout << "Ender three numbers:\n";
     std::cin >> a >> b >> c;
 
-    if (a > b && a > c)
-    {
-        std::cout << "Max number = " << a << "\n";
-    } else if (b > a && b > c)
-    {
-        std::cout << "Max number = " << b << "\n";
-    } else if (c > a && c > b)
-    {
-        std::cout << "Max number = " << c << "\n";
-    }
+    float maxNumber = a;
+    maxNumber = maxNumber > b ? maxNumber : b;
+    maxNumber = maxNumber > c ? maxNumber : c;
+    
+    std::cout << "Max number = " << maxNumber << "\n";
     std::cout << std::endl;
 
     //STEP 2
