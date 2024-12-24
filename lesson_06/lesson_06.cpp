@@ -159,7 +159,7 @@ int main()
 
     for (j = 0; j < HEIGHT; ++j) {
         for (k = 0; k <= j; ++k) {
-            std::cout << ((j + k) % 2 == 0 ? "1" : "0");
+            std::cout << ((j + k) % 2 != 0);
         }
         std::cout << std::endl;
     }
