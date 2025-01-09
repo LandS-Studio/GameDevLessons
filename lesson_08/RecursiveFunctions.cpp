@@ -11,6 +11,15 @@ int factorialRecursive(int count) {
 }
 
 // For STEP 4
+// Print numbers from smallest to largest using recursion
+void printNaturalNumbersSmallToLargeRecursion(int count, int current) {
+    if (current > count) {
+        return;
+    }
+    std::cout << current << " "; 
+    printNaturalNumbersSmallToLargeRecursion(count, current + 1); 
+}
+
 // Print numbers from largest to smallest using recursion
 void printNaturalNumbersLargeToSmallRecursion(int count) {
     if (count < 1) {
@@ -20,3 +29,4 @@ void printNaturalNumbersLargeToSmallRecursion(int count) {
     std::cout << count << " ";
     printNaturalNumbersLargeToSmallRecursion(count - 1);
 }
+

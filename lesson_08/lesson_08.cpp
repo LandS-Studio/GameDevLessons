@@ -102,6 +102,11 @@ int main() {
 
     std::cout << "From smallest to largest (loop): ";
     printNumbersSmallToLargeLoop(N);
+    std::cout << std::endl;
+
+    std::cout << "From smallest to largest (recursion): ";
+    printNaturalNumbersSmallToLargeRecursion(N, 1);
+    std::cout << std::endl;
 
     std::cout << "From largest to smallest (recursion): ";
     printNaturalNumbersLargeToSmallRecursion(N);
