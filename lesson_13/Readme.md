@@ -15,12 +15,12 @@ Wordle Console Game — це консольна версія популярно�
 ## Приклади роботи
 _Вставте сюди скріншоти:_  
 1. **Запуск гри та вибір режиму:**  
-   ![Main Menu](images/main_menu.png)  
+   ![Main Menu](image/main_menu.png)  
 
 2. **Процес відгадування:**  
-   ![Guess 1](images/guess_1.png)
-   ![Guess 2](images/guess_2.png)
-   ![Guess 3](images/guess_3.png)
+   ![Guess 1](image/guess_1.png)
+   ![Guess 2](image/guess_2.png)
+   ![Guess 3](image/guess_3.png)
 
 4. **Відгадування слова дня:**  
    ![Finish](images/finish.png)  
