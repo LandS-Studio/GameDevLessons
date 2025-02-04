@@ -26,6 +26,11 @@ int getCurrentDay() {
     return tmObj->tm_yday;
 }
 
+// Checks if the string is a valid 5-letter word consisting of letters.
+bool isValidWord(const std::string str){
+    return str.size() == 5 && all_of(str.begin(), str.end(), ::isalpha);
+}
+
 // Loads words from a file, filtering only 5-letter words consisting of letters.
 std::vector<std::string> loadWordsFromFile(const std::string& filename){
     std::vector<std::string> words;
@@ -33,9 +38,9 @@ std::vector<std::string> loadWordsFromFile(const std::string& filename){
     if (file.is_open()){
         std::string word;
         while (file >> word){
-            if (word.size() == 5 && all_of(word.begin(), word.end(), ::isalpha)){ //
+            if (isValidWord(word)){ 
                 std::transform(word.begin(), word.end(), word.begin(), ::tolower);
-                words.push_back(word);
+                words.push_back(std::move(word));
             }
         }
         file.close();
@@ -46,7 +51,7 @@ std::vector<std::string> loadWordsFromFile(const std::string& filename){
 }
 
 // Returns the word of the day based on the day number.
-std::string getWorldOfTheDay(const std::vector<std::string>& words, int dayNumber){
+std::string getWordOfTheDay(const std::vector<std::string>& words, int dayNumber){
     return words[dayNumber - 1];
 }
 
@@ -126,7 +131,6 @@ void playGame(const std::vector<std::string>& words){
         }
         
         if (choice == 1){
-            srand(static_cast<unsigned int>(std::time(nullptr)));
             secretWord = words[rand() % words.size()];
             break;
         }
@@ -136,7 +140,7 @@ void playGame(const std::vector<std::string>& words){
                 std::cout << "The Word of the Day has already been guessed. Try again tomorrow!" << std::endl;
                 continue;
             }
-            secretWord = getWorldOfTheDay(words, getCurrentDay());
+            secretWord = getWordOfTheDay(words, getCurrentDay());
             if (secretWord.empty()){
                 std::cout << "ERROR: Could not load Word of The Day. Existing." << std::endl;
                 continue;
@@ -156,7 +160,7 @@ void playGame(const std::vector<std::string>& words){
         std::cout << "ENTER:  ";
         std::cin >> guessWord;
 
-        if (guessWord.size() != 5 || !all_of(guessWord.begin(), guessWord.end(), ::isalpha)){
+        if (!isValidWord(guessWord)){
             std::cout << "WARNING: Please enter a valid 5-letter word." << std::endl;
             continue;
         }
@@ -187,6 +191,7 @@ void playGame(const std::vector<std::string>& words){
 
 int main() {
     // TODO: Shuffle the words in the database when a full year (365-366 days) has passed to ensure that the word for day 1 does not repeat.
+    srand(static_cast<unsigned int>(std::time(nullptr)));
     
     std::vector<std::string> words = loadWordsFromFile(WORDS_DATABASE_FILE);
     if (words.empty()){
