@@ -17,6 +17,7 @@ Vector2d& Vector2d::operator=(const Vector2d& other) {
 float& Vector2d::operator[](std::size_t idx) {
     if (idx == 0) return x;
     if (idx == 1) return y;
+    std::cout << "Invalid index" << std::endl;
 }
 
 void Vector2d::operator*=(float scalar) {

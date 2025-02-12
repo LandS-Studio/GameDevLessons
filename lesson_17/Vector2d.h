@@ -33,8 +33,6 @@ i. Метод для вводу(інпуту) вектора у форматі x
 
 class Vector2d {
 public:
-    float x, y;
-
     Vector2d(float x = 0.0, float y = 0.0);
 
     Vector2d& operator=(const Vector2d& other);
@@ -53,6 +51,7 @@ public:
     static int getInstancesCount();
 
 private:
+    float x, y;
     static int instancesCount;
 };
 

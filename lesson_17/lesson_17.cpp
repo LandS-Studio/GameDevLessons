@@ -65,6 +65,7 @@ int main() {
     std::cout << sumVec[1] << std::endl; // Output: 13.4
     std::cout << subVec[0] << std::endl; // Output: -2.2
     std::cout << subVec[1] << std::endl; // Output: -2.2
+    std::cout << subVec[-1] << std::endl; // Output: -2.2
     std::cout << std::endl;
 
     // g)
