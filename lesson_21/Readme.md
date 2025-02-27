@@ -11,7 +11,7 @@
 
 **Скріншот тестового вікна:**  
 *Вставте зображення тестового вікна тут.*  
-`![Test Window](image/screen.png)`
+`![Test Window](image/screen_1.png)`
 
 ---
 
