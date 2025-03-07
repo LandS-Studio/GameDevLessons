@@ -10,7 +10,7 @@ public:
 	virtual void apply(Munchkin* munchkin) = 0;
 
 	//#TODO: Implement in all children classes, see class Item for reference
-	virtual std::string getFullInfo() { return ""; }
+	virtual std::string getFullInfo();
 };
 
 class Runaway_LevelDowngrade : public Runaway
@@ -18,6 +18,7 @@ class Runaway_LevelDowngrade : public Runaway
 public:
 	Runaway_LevelDowngrade(int level = 1) : m_levelToDowngrade(level) {}
 	void apply(Munchkin* munchkin) override;
+	std::string getFullInfo() override;
 
 protected:
 	int m_levelToDowngrade;
@@ -30,6 +31,7 @@ public:
 		: Runaway_LevelDowngrade(level), m_minimalMunchkinLevelToApply(minimalMunchkinLevel) {}
 
 	void apply(Munchkin* munchkin) override;
+	std::string getFullInfo() override;
 
 private:
 	int m_minimalMunchkinLevelToApply;
@@ -40,7 +42,8 @@ class Runaway_ModifierFromHandRemoval : public Runaway
 {
 public:
 	//#TODO
-	void apply(Munchkin* munchkin) override {}
+	void apply(Munchkin* munchkin) override;
+	std::string getFullInfo() override;
 };
 
 
@@ -53,8 +56,8 @@ public:
 class Runaway_ItemEquipedRemoval : public Runaway
 {
 public:
-	//#TODO
-	void apply(Munchkin* munchkin) override {}
+	void apply(Munchkin* munchkin) override;
+	std::string getFullInfo() override;
 };
 
 //Remove equiped item from Outfit with biggest base power
@@ -62,6 +65,7 @@ class Runaway_BiggestBonusCardRemoval : public Runaway
 {
 public:
 	//#TODO
-	void apply(Munchkin* munchkin) override {}
+	void apply(Munchkin* munchkin) override;
+	std::string getFullInfo() override;
 };
 

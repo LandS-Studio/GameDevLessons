@@ -51,10 +51,10 @@ void pressAnyKeyToContinue()
 	std::cin >> anyKey;
 }
 
-void printMunchkinLost(Monster* monster)
-{
-	std::cout << "-------YOU'VE LOST to \"" << monster->getName() << "\"Monster!---------\n";
-	//#TODO: Print runaway policy monster dealt to Munchkin
+void printMunchkinLost(Monster* monster) {
+	// TASK "a" - Runaway policy getFullInfo() should be printed here
+	std::string monsterInfo = monster->getFullInfo();
+	std::cout << monsterInfo << std::endl;
 }
 
 std::string getTribeString(Tribe tribe)
@@ -78,6 +78,13 @@ void printIntro(Munchkin* munchkin)
 	std::string name;
 	std::cin >> name;
 	munchkin->setName(name);
+
+	// Select class type
+	std::cout << "Select your class type:\n";
+	munchkin->printAllClassType();
+	int choice;
+	std::cin >> choice;
+	munchkin->setClassType(choice);
 
 	UI::printTossing();
 }
@@ -105,7 +112,7 @@ void printModifiers(Munchkin* munchkin)
 
 void printPlayerDeck(Munchkin* munchkin)
 {
-	std::cout << std::endl << "\nMunchkin " << "\"" << munchkin->getName() << "\", level " << munchkin->getLevel() << std::endl;
+	std::cout << std::endl << "\nMunchkin " << "\"" << munchkin->getName() << "\" - class: \"" + munchkin->classToString() + "\", level " << munchkin->getLevel() << std::endl;
 	printItems(munchkin);
 	printModifiers(munchkin);
 }
@@ -195,6 +202,8 @@ void Game::run()
 		Fight fight;
 		fight.setMonster(monster);
 		fight.setMunchkin(&m_munchkin);
+		fight.setItemDeck(&m_itemsDeck);
+		fight.setModifiersDeck(&m_modifiersDeck);
 
 		fight.start();	//Initialization, calculate monster power, munchkin
 

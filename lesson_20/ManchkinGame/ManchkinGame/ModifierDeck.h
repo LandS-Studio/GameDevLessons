@@ -1,19 +1,38 @@
 #pragma once
+#include "DeckBase.h"
+#include "Modifier.h"
 #include <vector>
 
-//forward declaration to not include header into header which will increase compilation time
-class Modifier;
-
-class ModifierDeck
-{
+class ModifierDeck : public DeckBase<Modifier>{
 public:
-	ModifierDeck();
-	~ModifierDeck();
+	ModifierDeck() {
+		m_database = {
+			{new SimpleModifier{3}},
+			{new SimpleModifier{3}},
+			{new SimpleModifier{2}},
+			{new SimpleModifier{2}},
+			{new SimpleModifier{2}},
+			{new SimpleModifier{4}},
+			{new SimpleModifier{1}},
+			{new SimpleModifier{1}},
+			{new SimpleModifier{1}},
+			{new DoubleMunchkinLevel{}},
+			{new DoubleMunchkinLevel{}},
+			{new HalvesMonsterLevel{Tribe::Undead}},
+			{new HalvesMonsterLevel{Tribe::God}},
+			{new UniqueModifier(1, 2, 3, 4)},
+			{new UniqueModifier(1, 2, 3, 4)}
+		};
+	}
 
-	Modifier* generateModifier() const;
-
-	std::vector<Modifier*> generateModifiers() const { return m_modifiersDatabase; }
-
-private:
-	std::vector<Modifier*> m_modifiersDatabase;
+	std::vector<Modifier*> generateModifiers() {
+		std::vector<Modifier*> result;
+		m_availableItems = m_database;
+		for (int i = 0; i < 5; ++i) {
+			if (!m_availableItems.empty()) {
+				result.push_back(generateItem());
+			}
+		}
+		return result;
+	}
 };

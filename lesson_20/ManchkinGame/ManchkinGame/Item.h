@@ -7,6 +7,7 @@ class Item
 public:
 	virtual int getPower(Tribe monsterTribeModifier) const { return 0; }
 	virtual int getBasePower() const { return 0; }
+	virtual bool canDestroyMonster(Tribe monsterTribeModifier) const { return false; }
 
 	void setName(const std::string& name) { m_name = name; }
 	const std::string getName() const { return m_name; }
@@ -32,7 +33,7 @@ public:
 		return m_power;
 	}
 
-	virtual std::string getFullInfo() const override
+	std::string getFullInfo() const override
 	{
 		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: None\n";
 	}
@@ -46,7 +47,7 @@ class UndeadWeapon : public Weapon
 public:
 	UndeadWeapon(const std::string& name, int power) : Weapon(name, power) {}
 
-	virtual int getPower(Tribe monsterTribeModifier) const override
+	int getPower(Tribe monsterTribeModifier) const override
 	{
 		switch (monsterTribeModifier)	
 		{
@@ -59,7 +60,7 @@ public:
 		}
 	}
 
-	virtual std::string getFullInfo() const override
+	std::string getFullInfo() const override
 	{
 		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: x2 vs UNDEADS!\n";
 	}
@@ -70,7 +71,7 @@ class MagicWeapon : public Weapon
 public:
 	MagicWeapon(const std::string& name, int power) : Weapon(name, power) {}
 
-	virtual int getPower(Tribe monsterTribeModifier) const override
+	int getPower(Tribe monsterTribeModifier) const override
 	{
 		switch (monsterTribeModifier)
 		{
@@ -85,10 +86,36 @@ public:
 		}
 	}
 
-	virtual std::string getFullInfo() const override
+	std::string getFullInfo() const override
 	{
 		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: x2 vs GODS BUT x0.8 vs HUMANS!\n";
 	}
 };
 
-//TODO: Add new Item type with unique properties
+//TASK "b" - HolySword class
+class HolySword : public Weapon
+{
+public:
+	HolySword(const std::string& name, int power) : Weapon(name, power) {}
+
+	std::string getFullInfo() const override {
+		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: Instantly destroys a Zombie!\n";
+	}
+
+	int getPower(Tribe monsterTribeModifier) const override{
+		switch (monsterTribeModifier) {
+			case Tribe::Human:
+			case Tribe::Undead:
+				return m_power * 2;
+			case Tribe::Zombie:
+			case Tribe::God:
+			default:
+				return m_power;
+		}
+	}
+
+	bool canDestroyMonster(Tribe monsterTribeModifier) const override {
+		return monsterTribeModifier == Tribe::Zombie;
+	}
+
+};

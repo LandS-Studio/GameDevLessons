@@ -39,13 +39,24 @@ void Fight::runawayFlow()
 
 void Fight::victoryFlow()
 {
-	//#TODO: Implement at LEAST ONE victory policy similar to runaway policy
-	//Possible policies are:
-	//  Add new cards to hand
-	//  Generate new Outfit items???
-	//  Increase Level by 0,1,2
-	m_munchkin->updateLevelBy(1);
+	//Implemented at LEAST ONE victory policy similar to runaway policy
+	// TASK "h" - Implement at least 3 victory policies
+	IncreaseLevelVictory addLevelPolicy(1);
+	addLevelPolicy.apply(m_munchkin, *m_itemDeck, *m_modifiersDeck);
 
+	std::vector<VictoryPolicy*> victoryPolicies = {
+		new IncreaseLevelVictory(1),
+		new GenerateNewItemsVictory(1),
+		new GenerateNewModifiersVictory(2)
+	};
+
+	int randIndex = std::rand() % victoryPolicies.size();
+	victoryPolicies[randIndex]->apply(m_munchkin, *m_itemDeck, *m_modifiersDeck);
+
+	for (VictoryPolicy* policy : victoryPolicies) {
+		delete policy;
+	}
+	
 	m_result = FightResult::MunchkinWon;
 
 	//See runaway policy above for precise reference
@@ -62,6 +73,13 @@ void Fight::calculateMunchkinPower()
 
 void Fight::calculateMonsterPower()
 {
+	// TASK "b" - instant monster destruction
+	for (Item* item : m_munchkin->getItems()) {
+		if (item->canDestroyMonster(m_monster->getTribe())) {
+			m_monsterPower = 0;
+			return;
+		}
+	}
 	m_monsterPower = m_monster->getLevel();
 
 	//EXTEND if needed

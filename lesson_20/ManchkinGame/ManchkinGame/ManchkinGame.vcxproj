@@ -156,14 +156,12 @@
   <ItemGroup>
     <ClCompile Include="Fight.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="ItemDeck.cpp" />
     <ClCompile Include="ManchkinGame.cpp" />
-    <ClCompile Include="ModifierDeck.cpp" />
-    <ClCompile Include="MonsterDeck.cpp" />
     <ClCompile Include="Munchkin.cpp" />
     <ClCompile Include="Runaway.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DeckBase.h" />
     <ClInclude Include="Fight.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
@@ -175,6 +173,7 @@
     <ClInclude Include="Munchkin.h" />
     <ClInclude Include="Runaway.h" />
     <ClInclude Include="Tribe.h" />
+    <ClInclude Include="VictoryPolicy.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ManchkinGame.vcxproj.filters" />
