@@ -1,0 +1,4 @@
+Weapon;The Sword of DOOM;5
+UndeadWeapon;Stinky knife;2
+HolySword;Holy Sword;4
+MagicWeapon;HOLLY MOLLY;4
